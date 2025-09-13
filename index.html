@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Student CRUD App</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="antialiased bg-slate-50" style="font-family: Inter, 'Noto Sans', sans-serif;">
+    <div class="layout-container flex min-h-screen flex-col">
+      <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Left Side (Form) -->
+          <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">Students Details</h3>
+
+            <form id="studentForm" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 pb-1.5" for="studentName">Student Name</label>
+                <input id="studentName" class="form-input w-full" placeholder="Enter student name" autocomplete="off" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 pb-1.5" for="age">Age</label>
+                <input id="age" type="number" min="0" class="form-input w-full" placeholder="Enter student age" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 pb-1.5" for="email">Email</label>
+                <input id="email" type="email" class="form-input w-full" placeholder="Enter student email" autocomplete="off" />
+              </div>
+
+              <div class="pt-2">
+                <button id="submitBtn" type="submit" class="btn-primary">Add Student</button>
+                <button id="cancelEditBtn" type="button" class="btn-secondary hidden mt-2">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Side (Table + Search/Sort) -->
+          <div class="lg:col-span-2">
+            <div class="mb-6 flex flex-col sm:flex-row gap-4">
+              <div class="flex-1">
+                <label class="sr-only" for="search">Search</label>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">search</span>
+                  <input id="search" type="search" placeholder="Search students by name or email" class="search-input pl-10" />
+                </div>
+              </div>
+
+              <div>
+                <label class="sr-only" for="sortBy">Sort By</label>
+                <select id="sortBy" class="form-select">
+                  <option value="name" selected>Sort by Name</option>
+                  <option value="age">Sort by Age</option>
+                  <option value="email">Sort by Email</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-lg shadow-sm">
+              <table class="min-w-full divide-y divide-slate-200">
+                <thead class="bg-slate-50">
+                  <tr>
+                    <th class="table-head">Name</th>
+                    <th class="table-head">Age</th>
+                    <th class="table-head">Email</th>
+                    <th class="table-head">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="studentsTbody" class="bg-white divide-y divide-slate-200"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
